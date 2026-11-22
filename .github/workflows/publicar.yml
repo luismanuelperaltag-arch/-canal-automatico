@@ -1,4 +1,4 @@
-name:
+name:.github/workflows/publicar.yml
 on:
   schedule:
     # Todos los dias a las 14:00 UTC. Para mas videos al dia, agrega mas lineas
