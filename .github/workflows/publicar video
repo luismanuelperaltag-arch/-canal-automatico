@@ -1,6 +1,7 @@
-name:publicar video
+name: publicar video
+
 on:
-  schedule:
+  schedule:  
     # Todos los dias a las 14:00 UTC. Para mas videos al dia, agrega mas lineas
     # con otras horas, por ejemplo: - cron: "0 20 * * *"
     - cron: "0 14 * * *"
