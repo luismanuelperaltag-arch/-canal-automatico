@@ -1,4 +1,4 @@
-name: publicar video
+name:publicar.yml
 
 on:
   schedule:  
