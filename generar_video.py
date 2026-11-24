@@ -483,4 +483,26 @@ def producir_uno(historial):
 
 
 def main():
-    guardar_historial(carg
+    guardar_historial(cargar_historial())  # asegura que el archivo exista
+    faltan = [k for k in ("GROQ_API_KEY", "PIXABAY_API_KEY", "YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN")
+              if not os.environ.get(k)]
+    if faltan:
+        sys.exit(f"Faltan estos secretos en GitHub: {', '.join(faltan)}")
+    if not shutil.which("ffmpeg"):
+        sys.exit("FFmpeg no esta instalado.")
+
+    historial = cargar_historial()
+    fallos = 0
+    for n in range(CANTIDAD):
+        print(f"\n=== Video {n + 1} de {CANTIDAD} ===")
+        try:
+            producir_uno(historial)
+            guardar_historial(historial)
+        except Exception as e:
+            fallos += 1
+            print(f"ERROR: {e}")
+    sys.exit(1 if fallos == CANTIDAD else 0)
+
+
+if __name__ == "__main__":
+    main()
